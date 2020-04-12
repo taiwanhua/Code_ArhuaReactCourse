@@ -8,10 +8,8 @@ const App = () => {
   return (
     <>
       <p >這是我第一個函數組件App</p>
-      <button onClick={() => { setCount(Count + 1) }}>APP組件自己的按紐</button>
-      <div>APP組件自己的按紐，按了 : {Count}次</div>
-      <div style={{ backgroundColor: Count > 0 ? "green" : "red" }}>按了變色</div>
-      <Buttonone a={Count}></Buttonone>
+      <div>Count : {Count}</div>
+      <Buttonone a={(x) => { setCount(x) }}></Buttonone>
     </>
   )
 }
