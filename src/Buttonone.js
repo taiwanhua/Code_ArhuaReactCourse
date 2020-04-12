@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Buttonone = (props) => {
-    console.log("props", props);
 
     return (
-        <button>按鈕 {props.children}</button>
+        <button>按鈕 {props.a}</button>
     )
 }
 

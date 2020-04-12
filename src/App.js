@@ -11,6 +11,7 @@ const App = () => {
       <button onClick={() => { setCount(Count + 1) }}>APP組件自己的按紐</button>
       <div>APP組件自己的按紐，按了 : {Count}次</div>
       <div style={{ backgroundColor: Count > 0 ? "green" : "red" }}>按了變色</div>
+      <Buttonone a={Count}></Buttonone>
     </>
   )
 }
