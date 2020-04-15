@@ -1,17 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Context } from './store';
 
 const Buttonthree = () => {
+    const { Count, setCount } = useContext(Context)
     return (
         <>
-            <Context.Consumer>
-                {value =>
-                    <>
-                        <p>Buttonthree組件 : {value.Count}</p>
-                        <button onClick={() => { value.setCount(value.Count + 1) }}>Buttonthree按鈕</button>
-                    </>
-                }
-            </Context.Consumer>
+            <p>Buttonthree組件 : {Count}</p>
+            <button onClick={() => { setCount(Count + 1) }}>Buttonthree按鈕</button>
         </>
     )
 }
