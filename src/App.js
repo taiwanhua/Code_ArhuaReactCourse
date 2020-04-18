@@ -34,15 +34,20 @@ class App extends Component {
     console.log(document.getElementById("pForApp"));
   }
   componentDidUpdate() {
+    console.log("執行App的componentDidUpdate方法，count : " + this.state.count);
   }
   componentWillUnmount() {
   }
-
+  updatecount() {
+    this.setState({ count: this.state.count + 1 });
+    console.log("觸發updatecount，按下按鈕時的count值 : ", this.state.count)
+  }
   render() {
-    console.log("執行App的render函數")
+    console.log("執行App的render函數，按下按鈕時的count值 : ", this.state.count)
     return (
       <>
         <p id="pForApp" >這是我第一個函數組件App</p>
+        <button onClick={() => { this.updatecount() }}>觸發App重新渲染次數 : {this.state.count}</button>
       </>
     );
   }
