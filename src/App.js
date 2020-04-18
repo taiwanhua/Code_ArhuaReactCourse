@@ -22,6 +22,8 @@
 
 
 import React, { Component } from 'react';
+import Buttonone from './Buttonone'
+import Buttontwo from './Buttontwo';
 
 class App extends Component {
   constructor(props) {
@@ -40,7 +42,7 @@ class App extends Component {
   }
   updatecount() {
     this.setState({ count: this.state.count + 1 });
-    console.log("觸發updatecount，按下按鈕時的count值 : ", this.state.count)
+    console.log("觸發App的updatecount，按下按鈕時的count值 : ", this.state.count)
   }
   render() {
     console.log("執行App的render函數，按下按鈕時的count值 : ", this.state.count)
@@ -48,6 +50,8 @@ class App extends Component {
       <>
         <p id="pForApp" >這是我第一個函數組件App</p>
         <button onClick={() => { this.updatecount() }}>觸發App重新渲染次數 : {this.state.count}</button>
+        <Buttonone></Buttonone>
+        <Buttontwo></Buttontwo>
       </>
     );
   }
