@@ -31,6 +31,7 @@ class Buttonone extends Component {
         console.log("執行Buttonone的componentDidUpdate方法，count : " + this.state.count);
     }
     componentWillUnmount() {
+        console.log("執行Buttonone的componentWillUnmount方法，count");
     }
     updatecount() {
         this.setState({ count: this.state.count + 1 });

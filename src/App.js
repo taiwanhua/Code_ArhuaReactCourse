@@ -29,7 +29,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     console.log("執行App的constructor函數");
-    this.state = { count: 0 };
+    this.state = { count: 0, unmount: false };
   }
   componentDidMount() {
     console.log("執行App的componentDidMount方法");
@@ -41,8 +41,11 @@ class App extends Component {
   componentWillUnmount() {
   }
   updatecount() {
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ ...this.state, count: this.state.count + 1 });
     console.log("觸發App的updatecount，按下按鈕時的count值 : ", this.state.count)
+  }
+  unmountButtonone() {
+    this.setState({ ...this.state, unmount: !this.state.unmount });
   }
   render() {
     console.log("執行App的render函數，按下按鈕時的count值 : ", this.state.count)
@@ -50,7 +53,8 @@ class App extends Component {
       <>
         <p id="pForApp" >這是我第一個函數組件App</p>
         <button onClick={() => { this.updatecount() }}>觸發App重新渲染次數 : {this.state.count}</button>
-        <Buttonone></Buttonone>
+        <button onClick={() => { this.unmountButtonone() }}>卸載/掛載Buttonone </button>
+        {!this.state.unmount && <Buttonone></Buttonone>}
         <Buttontwo></Buttontwo>
       </>
     );
