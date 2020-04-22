@@ -11,7 +11,7 @@ const App = (props) => {
     // return () => {
     //   console.log("App的cleanup function")
     // }
-  })
+  }, [])
 
   return (
     <>
