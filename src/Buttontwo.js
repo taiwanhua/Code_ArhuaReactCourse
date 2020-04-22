@@ -10,7 +10,7 @@ const Buttontwo = (props) => {
         // return () => {
         //     console.log("Buttontwo的cleanup function")
         // }
-    }, [])
+    }, [State])
 
     return (
         <>
