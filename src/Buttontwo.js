@@ -10,7 +10,15 @@ const Buttontwo = (props) => {
         // return () => {
         //     console.log("Buttontwo的cleanup function")
         // }
-    }, [State])
+    })
+
+    useEffect(() => {
+        // console.log("Buttontwo的EffectCallback")
+
+        return () => {
+            console.log("Buttontwo的cleanup function")
+        }
+    }, [])
 
     return (
         <>

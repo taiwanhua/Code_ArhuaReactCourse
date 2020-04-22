@@ -11,7 +11,15 @@ const App = (props) => {
     // return () => {
     //   console.log("App的cleanup function")
     // }
-  }, [State])
+  })
+
+  useEffect(() => {
+    // console.log("App的EffectCallback")
+
+    return () => {
+      console.log("App的cleanup function")
+    }
+  }, [])
 
   return (
     <>
