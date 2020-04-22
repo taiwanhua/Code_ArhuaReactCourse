@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 const Buttontwo = (props) => {
 
     const [State, setState] = useState({ show: true, count: 0 });
+    const ref = useRef(false);
 
     useEffect(() => {
-        console.log("Buttontwo的EffectCallback")
-
+        if (ref.current) {
+            console.log("update")
+        }
         // return () => {
         //     console.log("Buttontwo的cleanup function")
         // }
     })
 
     useEffect(() => {
-        // console.log("Buttontwo的EffectCallback")
+        ref.current = true;
+        console.log("Buttontwo的EffectCallback")
 
         return () => {
             console.log("Buttontwo的cleanup function")
