@@ -30,9 +30,9 @@ const Buttontwo = (props) => {
             }
         }
 
-        console.log(MyFetch("https://my-json-server.typicode.com/taiwanhua/demo/posts/"));
+        console.log(MyFetch(`https://my-json-server.typicode.com/taiwanhua/demo/posts/${State.count}`));
 
-    }, [])
+    }, [State])
 
     return (
         <>
