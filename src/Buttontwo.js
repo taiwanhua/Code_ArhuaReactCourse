@@ -3,24 +3,35 @@ import React, { useEffect, useState, useRef } from 'react';
 const Buttontwo = (props) => {
 
     const [State, setState] = useState({ show: true, count: 0 });
-    const ref = useRef(false);
 
     useEffect(() => {
-        if (ref.current) {
-            console.log("update")
-        }
-        // return () => {
-        //     console.log("Buttontwo的cleanup function")
-        // }
-    })
+        const MyFetch = async (Url_, Parma_ = {}) => {
+            try {
+                const Response = await fetch(Url_, Parma_)
+                    .then(Result => {
+                        const ResultJson = Result.clone().json();//Respone.clone()
 
-    useEffect(() => {
-        ref.current = true;
-        console.log("Buttontwo的EffectCallback")
+                        return ResultJson;
+                    })
+                    .then((PreResult) => {
 
-        return () => {
-            console.log("Buttontwo的cleanup function")
+                        return PreResult;
+                    })
+                    .catch((Error) => {
+
+                    })
+                    .finally(() => {
+
+                    });
+
+                return Response;
+            } catch (Error) {
+
+            }
         }
+
+        console.log(MyFetch("https://my-json-server.typicode.com/taiwanhua/demo/posts/"));
+
     }, [])
 
     return (
