@@ -4,6 +4,8 @@ const Buttontwo = (props) => {
 
     const [State, setState] = useState({ show: true, count: 0 });
 
+    const ref = useRef(0);
+
     useEffect(() => {
         const MyFetch = async (Url_, Parma_ = {}) => {
             try {
@@ -38,6 +40,10 @@ const Buttontwo = (props) => {
         <>
             <p>Buttontwo組件</p>
             <button onClick={() => { setState({ ...State, count: State.count + 1 }) }}>觸發Buttontwo重新渲染次數 : {State.count}</button>
+            {/* <button onClick={() => { console.log(ref.current); ref.current.focus(); }}>focus</button> */}
+            {/* <input ref={ref} style={{ backgroundColor: State.count % 2 === 1 ? 'red' : 'green' }}></input> */}
+            <input onChange={() => { console.log(ref.current); ref.current += 1; }} ></input>
+            <p>ref.current : {ref.current}</p>
         </>
     )
 }
