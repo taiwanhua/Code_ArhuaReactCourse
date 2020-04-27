@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useFetch } from './useFetch';
+import { useForm } from './useForm';
 
 const Buttontwo = (props) => {
 
@@ -7,11 +8,20 @@ const Buttontwo = (props) => {
 
     const result = useFetch(`https://my-json-server.typicode.com/taiwanhua/demo/posts/${State.count}`);
 
+    const [ID, IDhandler, IDregExpResult] = useForm("", "^[a-zA-Z0-9]{0,5}$");
+
+    const [Phone, Phonehandler, PhoneregExpResult] = useForm("", "^[0-9]{0,10}$");
+
     return (
         <>
             <p>Buttontwo組件</p>
             <button onClick={() => { setState({ ...State, count: State.count + 1 }) }}>觸發Buttontwo重新渲染次數 : {State.count}</button>
             <p>{JSON.stringify(result)}</p>
+            ID : <input value={ID} onChange={IDhandler}></input>
+            {IDregExpResult}
+            <br />
+            Phone: <input value={Phone} onChange={Phonehandler}></input>
+            {PhoneregExpResult}
         </>
     )
 }
