@@ -1,27 +1,29 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useFetch } from './useFetch';
-import { useForm } from './useForm';
+import React, { useReducer } from 'react';
 
+const reducer = (state, action) => {
+
+    switch (action.type) {
+        case "加":
+            return state + action.payload;
+        case "減":
+            return state - action.payload;
+        case "歸零":
+            return 0;
+        default:
+            return "處理失敗";
+    }
+}
 const Buttontwo = (props) => {
 
-    const [State, setState] = useState({ show: true, count: 0 });
-
-    const result = useFetch(`https://my-json-server.typicode.com/taiwanhua/demo/posts/${State.count}`);
-
-    const [ID, IDhandler, IDregExpResult] = useForm("", "^[a-zA-Z0-9]{0,5}$");
-
-    const [Phone, Phonehandler, PhoneregExpResult] = useForm("", "^[0-9]{0,10}$");
+    const [state, dispatch] = useReducer(reducer, 0);
 
     return (
         <>
             <p>Buttontwo組件</p>
-            <button onClick={() => { setState({ ...State, count: State.count + 1 }) }}>觸發Buttontwo重新渲染次數 : {State.count}</button>
-            <p>{JSON.stringify(result)}</p>
-            ID : <input value={ID} onChange={IDhandler}></input>
-            {IDregExpResult}
-            <br />
-            Phone: <input value={Phone} onChange={Phonehandler}></input>
-            {PhoneregExpResult}
+            <p>{state}</p>
+            <button onClick={() => { dispatch({ type: "加", payload: 1 }) }}>+</button>
+            <button onClick={() => { dispatch({ type: "減", payload: 1 }) }}>-</button>
+            <button onClick={() => { dispatch({ type: "歸零" }) }}>C</button>
         </>
     )
 }
