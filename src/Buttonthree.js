@@ -6,7 +6,7 @@ const Buttonthree = () => {
     return (
         <>
             <p>Buttonthree組件 : {Count}</p>
-            <button onClick={() => { setCount(Count + 1) }}>Buttonthree按鈕</button>
+            <button onClick={() => { setCount({ type: "加", payload: 1 }) }}>Buttonthree按鈕</button>
         </>
     )
 }
