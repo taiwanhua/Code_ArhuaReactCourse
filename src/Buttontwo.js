@@ -1,5 +1,9 @@
 import React, { useReducer } from 'react';
 
+const init = (initState) => {
+    return initState + 100;
+}
+
 const reducer = (state, action) => {
 
     switch (action.type) {
@@ -15,7 +19,7 @@ const reducer = (state, action) => {
 }
 const Buttontwo = (props) => {
 
-    const [state, dispatch] = useReducer(reducer, 0);
+    const [state, dispatch] = useReducer(reducer, 0, init);
 
     return (
         <>
