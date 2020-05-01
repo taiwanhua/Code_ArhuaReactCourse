@@ -1,14 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useParams } from 'react-router-dom';
 
 function App() {
   return (
     <Switch>
       <Route exact path={"/"} children={<Home />} />
-      <Route path={"/work/1"} children={<Work props={1} />} />
-      <Route path={"/work/2"} children={<Work props={2} />} />
+      <Route path={"/work/:number"} children={<Work />} />
     </Switch>
   );
 }
@@ -24,9 +23,12 @@ const Home = (props) => {
 }
 
 const Work = ({ props }) => {
+
+  const { number } = useParams();
+
   return (
     <>
-      <p>這裡是Work : {props}</p>
+      <p>這裡是Work : {number}</p>
     </>
   )
 }
