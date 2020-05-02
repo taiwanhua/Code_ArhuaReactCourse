@@ -1,17 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Switch, Route, useParams, useRouteMatch, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, useParams, useRouteMatch, Redirect, Link, useLocation } from 'react-router-dom';
 
 function App() {
   return (
     <>
       <Link to={"/"}>Home</Link>
       <Link to={"/work/1"}>work 1</Link>
-      <Link to={"/work/2"}>work 2</Link>
+      <Link to={"/work?p=2"}>work 2</Link>
       <Switch>
         <Route exact path={"/"} children={<Home />} />
-        <Route path={"/work/:number"} children={<Work />} />
+        <Route path={"/work"} children={<Work />} />
         <Route path={"*"} component={NotFound}></Route>
       </Switch>
     </>
@@ -31,10 +31,11 @@ const Home = (props) => {
 const Work = ({ props }) => {
 
   const { number } = useParams();
+  const p = new URLSearchParams(useLocation().search).get("p");
 
   return (
     <>
-      <p>這裡是Work : {number}</p>
+      <p>這裡是Work : {p}</p>
     </>
   )
 }
