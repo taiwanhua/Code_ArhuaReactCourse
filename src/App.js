@@ -1,15 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Switch, Route, useParams, useRouteMatch, Redirect } from 'react-router-dom';
+import { Switch, Route, useParams, useRouteMatch, Redirect, Link } from 'react-router-dom';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path={"/"} children={<Home />} />
-      <Route path={"/work/:number"} children={<Work />} />
-      <Route path={"*"} component={NotFound}></Route>
-    </Switch>
+    <>
+      <Link to={"/"}>Home</Link>
+      <Link to={"/work/1"}>work 1</Link>
+      <Link to={"/work/2"}>work 2</Link>
+      <Switch>
+        <Route exact path={"/"} children={<Home />} />
+        <Route path={"/work/:number"} children={<Work />} />
+        <Route path={"*"} component={NotFound}></Route>
+      </Switch>
+    </>
   );
 }
 
