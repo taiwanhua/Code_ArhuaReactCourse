@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useParams, useRouteMatch, Redirect } from 'react-router-dom';
 
 function App() {
   return (
@@ -40,6 +40,7 @@ const NotFound = (props) => {
 
   return (
     <>
+      <Redirect to="/"></Redirect>
       Not Found ,path : {path} , url : {url}
     </>
   )
